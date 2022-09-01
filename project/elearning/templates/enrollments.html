@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block enrollments %}
+Students
+{% for student in students %}
+{{student}}
+{% endfor %}
+Assistants
+{% for assistant in assistants %}
+{{assistant}}
+{% endfor %}
+{% endblock %}

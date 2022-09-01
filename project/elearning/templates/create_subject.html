@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block create_subject %}
+<form method="post">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Subject name:</label>
+        {{form.name}}
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Short:</label>
+        {{form.kod}}
+    </div>
+    <div class="form-floating">
+        <p>Program:</p>
+        {{form.program}}
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">ECTS:</label>
+        {{form.ects}}
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Sem_red:</label>
+        {{form.sem_red}}
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Sem_izv:</label>
+        {{form.sem_izv}}
+    </div>
+    <div class="form-floating">
+        <p>Izborni:</p>
+        {{form.izborni}}
+    </div>
+    <div class="form-floating">
+        <p>Nositelj:</p>
+        {{form.nositelj}}
+    </div>
+    {% csrf_token %}
+    <button type="sumbit" class="btn btn-success">Save</button>
+
+</form>
+{% endblock %}

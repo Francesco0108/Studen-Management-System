@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block subject %}
+<div style="text-align:center;">
+<h1>{{sub.name}}<h1>
+<h3>Professor details<h3>
+<p>Name:{{sub.nositelj.first_name}} {{sub.nositelj.last_name}}<p>
+<p>E-mail:{{sub.nositelj.email}}<p>
+</div>
+<h3 style="text-align:left;">Assistants:<h3>
+<div style="display:flex; flex-wrap:wrap;">
+{% for assistant in assistants %}
+    <div class="card" style="width: 18rem; margin-left:4px;">
+        <div class="card-body">
+            <h5 class="card-title">{{assistant.first_name}} {{assistant.last_name}}</h5>
+            <p class="card-text">{{assistant.email}}</p>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+<div>
+<h3 style="text-align:left;">Students:<h3>
+<p style="text-align:left;">Passed:</p>
+<div style="display:flex; flex-wrap:wrap;">
+{% for student in pass_students %}
+<div class="card" style="width: 23rem; background-color:rgb(153,255,153); margin-left:4px;">
+    <div class="card-body">
+        <h5 class="card-title"><a href="http://localhost:8000/enrollments/{{student.id}}/">{{student.first_name}} {{student.last_name}}</a></h5>
+        <p class="card-text">{{student.email}}</p>
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between" >
+        {% for status in all_status %}
+        {% if status.name == 'Polozen' %}
+        <button type="button"  class="btn btn-outline-success"><a href="http://localhost:8000/changesubjectstatus/{{sub.id}}/{{student.id}}/{{status.id}}" style="text-decoration:none; color:black">{{status.name}}</a></button>
+        {% endif %}
+        {% if status.name == 'Upisan' %}
+        <button type="button" class="btn btn-outline-secondary"><a href="http://localhost:8000/changesubjectstatus/{{sub.id}}/{{student.id}}/{{status.id}}" style="text-decoration:none; color:black">{{status.name}}</a></button>
+        {% endif %}
+        {% if status.name == 'Izgubio/la pravo' %}
+        <button type="button" class="btn btn-outline-danger"><a href="http://localhost:8000/changesubjectstatus/{{sub.id}}/{{student.id}}/{{status.id}}" style="text-decoration:none; color:black">{{status.name}}</a></button>
+        {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+<p style="text-align:left;">Enrolled:</p>
+<div style="display:flex; flex-wrap:wrap;">
+{% for student in enr_students %}
+<div class="card" style="width: 23rem; background-color:rgb(192,192,192);margin-left:4px;">
+    <div class="card-body">
+        <h5 class="card-title"><a href="http://localhost:8000/enrollments/{{student.id}}/">{{student.first_name}} {{student.last_name}}</a></h5>
+        <p class="card-text">{{student.email}}</p>
+        <div style="display:flex; flex-wrap:wrap; justify-content:space-between" >
+        {% for status in all_status %}
+        {% if status.name == 'Polozen' %}
+        <button type="button"  class="btn btn-outline-success"><a href="http://localhost:8000/changesubjectstatus/{{sub.id}}/{{student.id}}/{{status.id}}" style="text-decoration:none; color:black">{{status.name}}</a></button>
+        {% endif %}
+        {% if status.name == 'Upisan' %}
+        <button type="button" class="btn btn-outline-secondary"><a href="http://localhost:8000/changesubjectstatus/{{sub.id}}/{{student.id}}/{{status.id}}" style="text-decoration:none; color:black">{{status.name}}</a></button>
+        {% endif %}
+        {% if status.name == 'Izgubio/la pravo' %}
+        <button type="button" class="btn btn-outline-danger"><a href="http://localhost:8000/changesubjectstatus/{{sub.id}}/{{student.id}}/{{status.id}}" style="text-decoration:none; color:black">{{status.name}}</a></button>
+        {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+<p style="text-align:left;">Lost:</p>
+<div style="display:flex; flex-wrap:wrap;">
+    {% for student in lost_students %}
+    <div class="card" style="width: 23rem; background-color:rgb(255,102,102);margin-left:4px;">
+        <div class="card-body">
+            <h5 class="card-title"><a href="http://localhost:8000/enrollments/{{student.id}}/">{{student.first_name}} {{student.last_name}}</a></h5>
+            <p class="card-text">{{student.email}}</p>
+            <div style="display:flex; flex-wrap:wrap; justify-content:space-between" >
+            {% for status in all_status %}
+            {% if status.name == 'Polozen' %}
+            <button type="button"  class="btn btn-outline-success"><a href="http://localhost:8000/changesubjectstatus/{{sub.id}}/{{student.id}}/{{status.id}}" style="text-decoration:none; color:black">{{status.name}}</a></button>
+            {% endif %}
+            {% if status.name == 'Upisan' %}
+            <button type="button" class="btn btn-outline-secondary"><a href="http://localhost:8000/changesubjectstatus/{{sub.id}}/{{student.id}}/{{status.id}}" style="text-decoration:none; color:black">{{status.name}}</a></button>
+            {% endif %}
+            {% if status.name == 'Izgubio/la pravo' %}
+            <button type="button" class="btn btn-outline-danger"><a href="http://localhost:8000/changesubjectstatus/{{sub.id}}/{{student.id}}/{{status.id}}" style="text-decoration:none; color:black">{{status.name}}</a></button>
+            {% endif %}
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+
+{% endblock %}

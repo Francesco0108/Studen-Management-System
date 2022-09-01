@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block subjects %}
+<div class="w-auto p-3" style="background-color: #eee;">
+<ul class="list-group">
+{% for subject in data%}
+<div class="h-75 d-inline-block" style="background-color: rgba(0,0,255,.1)">
+<li class="list-group-item">
+<div style="display:flex; justify-content:space-between;">
+<div>
+{% if request.user.role.name == 'Admin' or request.user.role.name == 'Professor'%}
+<a href="http://localhost:8000/subject/{{subject.id}}">{{subject.name}}</a>
+{% else %}
+<p>{{subject.name}}<p>
+{% endif %}
+</div>
+<div>
+{% if request.user.role.name == 'Admin' %}
+<button type="button" class="btn btn-outline-secondary"><a href="http://localhost:8000/updatesubject/{{subject.id}}" style="text-decoration:none; color:black">Update</a></button>
+<button type="button" class="btn btn-outline-danger"><a href="http://localhost:8000/deletesubject/{{subject.id}}" style="text-decoration:none; color:black">Delete</a></button>
+<button type="button" class="btn btn-outline-secondary"><a href="http://localhost:8000/users/{{subject.id}}" style="text-decoration:none; color:black">Users</a></button>
+{% elif request.user.role.name == 'Student' %}
+<button type="button" class="btn btn-outline-secondary"><a href="http://localhost:8000/unenroll/{{subject.id}}" style="text-decoration:none; color:black">Unenroll</a></button>
+{% else %}
+<button type="button" class="btn btn-outline-secondary"><a href="http://localhost:8000/users/{{subject.id}}" style="text-decoration:none; color:black">Student list</a></button>
+{% endif %}
+</div>
+</div>
+</li>
+</div>
+{% endfor %}
+</ul>
+</div>
+{% endblock %}

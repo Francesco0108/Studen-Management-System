@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block enr %}
+<a href="http://localhost:8000/enroll/{{student_id}}/">Enroll to</a>
+<h4 style="font-weight: 900; text-align:center;">Semestar 1<h4>
+<ul class="list-group">
+{% for key,value in subjects.items %}
+{% if value.semestar == '1' %}
+<li class="list-group-item">
+<div style="display:flex; justify-content:space-between;">
+<div>
+{{key}}
+</div>
+<div> 
+{{value.status}}
+</div>
+</div>
+</li>
+{% elif value.semestar == '2'%}
+{{ break }}
+{% endif %}
+{% endfor %}
+</ul>
+<h4 style="font-weight: 900; text-align:center;">Semestar 2<h4>
+<ul class="list-group">
+{% for key,value in subjects.items %}
+{% if value.semestar == '2' %}
+<li class="list-group-item">
+    <div style="display:flex; justify-content:space-between;">
+    <div>
+    {{key}}
+    </div>
+    <div> 
+    {{value.status}}
+    </div>
+    </div>
+</li>
+{% elif value.semestar == '3'%}
+{{ break }}
+{% endif %}
+{% endfor %}
+</ul>
+<h4 style="font-weight: 900; text-align:center;">Semestar 3<h4>
+    <ul class="list-group">
+{% for key,value in subjects.items %}
+{% if value.semestar == '3' %}
+<li class="list-group-item">
+    <div style="display:flex; justify-content:space-between;">
+    <div>
+    {{key}}
+    </div>
+    <div> 
+    {{value.status}}
+    </div>
+    </div>
+</li>
+{% elif value.semestar == '4'%}
+{{ break }}
+{% endif %}
+{% endfor %}
+</ul>
+<h4 style="font-weight: 900; text-align:center;">Semestar 4<h4>
+    <ul class="list-group">
+{% for key,value in subjects.items %}
+{% if value.semestar == '4' %}
+<li class="list-group-item">
+    <div style="display:flex; justify-content:space-between;">
+    <div>
+    {{key}}
+    </div>
+    <div> 
+    {{value.status}}
+    </div>
+    </div>
+</li>
+{% elif value.semestar == '5'%}
+{{ break }}
+{% endif %}
+{% endfor %}
+</ul>
+<h4 style="font-weight: 900; text-align:center;">Semestar 5<h4>
+    <ul class="list-group">
+{% for key,value in subjects.items %}
+{% if value.semestar == '5' %}
+<li class="list-group-item">
+    <div style="display:flex; justify-content:space-between;">
+    <div>
+    {{key}}
+    </div>
+    <div> 
+    {{value.status}}
+    </div>
+    </div>
+</li>
+{% elif value.semestar == '6'%}
+{{ break }}
+{% endif %}
+{% endfor %}
+</ul>
+<h4 style="font-weight: 900; text-align:center;">Semestar 6<h4>
+    <ul class="list-group">
+{% for key,value in subjects.items %}
+{% if value.semestar == '6' %}
+<li class="list-group-item">
+    <div style="display:flex; justify-content:space-between;">
+    <div>
+    {{key}}
+    </div>
+    <div> 
+    {{value.status}}
+    </div>
+    </div>
+</li>
+{% elif value.semestar == '7'%}
+{{ break }}
+{% endif %}
+{% endfor %}
+</ul>
+{% endblock %}

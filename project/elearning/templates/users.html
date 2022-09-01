@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block users_list %}
+<ul class="list-group">
+{% for user in users %}
+<div>
+<li class="list-group-item">
+<div style="display:flex; justify-content:space-between;">
+<a href="http://localhost:8000/enrollments/{{user.id}}/">{{user.first_name}} {{user.last_name}}
+<button type="button" class="btn btn-outline-secondary"><a href="http://localhost:8000/staffunenroll/{{sub_id}}/{{user.id}}" style="text-decoration:none; color:black">Unenroll</a></button>
+</div>
+</li>
+
+{% endfor %}
+</div>
+</ul>
+{% endblock %}

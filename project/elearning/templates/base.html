@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student management system</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+  {% if request.user %}
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="http://localhost:8000/home/">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Users
+                </a>
+                {% if request.user.role.name == 'Admin' %}
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="http://localhost:8000/createuser/">Create User</a></li>
+                  <li><a class="dropdown-item" href="#">All Users</a></li>
+                </ul>
+                {% endif %}
+              </li>
+              {% if request.user.role.name == 'Admin' %}
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8000/createsubject/">Create Subject</a>
+              </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost:8000/logout/">Log out</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    {% endif %}
+    {% block login %}
+    {% endblock %}
+    {% block subjects %}
+    {% endblock %}
+    {% block subject %}
+    {% endblock %}
+    {% block create_subject %}
+    {% endblock %}
+    {% block create_user %}
+    {% endblock %}
+    {% block enrollments %}
+    {% endblock %}
+    {% block enroll %}
+    {% endblock %}
+    {% block enr %}
+    {% endblock %}
+    {% block users_list %}
+    {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
